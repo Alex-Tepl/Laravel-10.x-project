@@ -20,7 +20,7 @@ class Post extends Model
 
 	protected $fillable = ['title', 'content', 'category_id', 'status', 'slug'];
 
-	//protected $guarded = [];  //��� �� ��������� �����-�� ����������� ����
+	//protected $guarded = [];
 
 
 	public function category(): BelongsTo{
