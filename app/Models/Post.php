@@ -16,28 +16,29 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasFactory;
-	
-	
-	protected $fillable = ['title', 'content', 'category_id', 'status', 'slug'];
-	
-	//protected $guarded = [];  //что бы запретить какие-то определённые поля
 
-	
+
+	protected $fillable = ['title', 'content', 'category_id', 'status', 'slug'];
+
+	//protected $guarded = [];  //пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+
+
 	public function category(): BelongsTo{
-		
+
 		return $this->belongsTo(Category::class);
 	}
-	
-	
+
+
 	public function tags(): BelongsToMany{
-		
+
 		//return $this->belongsToMany(Tag::class)->withPivot(['created_at']);
 		return $this->belongsToMany(Tag::class)->as('ts')->withTimestamps();
 	}
-	
-	
+
+    //just a test comment, don't pay attention ;)
+
 	public function isPublished(){
-		
+
 		return $this->status ? 'Published !' : 'Not published ;(';
 	}
 
